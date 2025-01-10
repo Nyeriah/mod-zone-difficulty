@@ -9,15 +9,15 @@
 
 struct ZoneDifficultyNerfData
 {
-    float HealingNerfPct;
-    float AbsorbNerfPct;
-    float SpellDamageBuffPct;
-    float MeleeDamageBuffPct;
-    int8 Enabled;
-    float HealingNerfPctHard;
-    float AbsorbNerfPctHard;
-    float SpellDamageBuffPctHard;
-    float MeleeDamageBuffPctHard;
+    float HealingNerfPct = 1.0f;
+    float AbsorbNerfPct = 1.0f;
+    float SpellDamageBuffPct = 1.0f;
+    float MeleeDamageBuffPct = 1.0f;
+    int8 Enabled = 1;
+    float HealingNerfPctHard = 1.0f;
+    float AbsorbNerfPctHard = 1.0f;
+    float SpellDamageBuffPctHard = 1.0f;
+    float MeleeDamageBuffPctHard = 1.0f;
 };
 
 struct ZoneDifficulySpellOverrideData
@@ -66,8 +66,8 @@ struct VendorSelectionData
 
 struct CreatureOverrideData
 {
-    float NormalOverride;
-    float MythicOverride;
+    float NormalOverride = 1.0f;
+    float MythicOverride = 1.0f;
 };
 
 int32 const DUEL_INDEX = 0x7FFFFFFF;

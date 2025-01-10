@@ -45,6 +45,10 @@ void ZoneDifficulty::LoadMapDifficultySettings()
     NerfInfo[DUEL_INDEX][0].AbsorbNerfPct = 1;
     NerfInfo[DUEL_INDEX][0].MeleeDamageBuffPct = 1;
     NerfInfo[DUEL_INDEX][0].SpellDamageBuffPct = 1;
+    NerfInfo[DUEL_INDEX][0].HealingNerfPctHard = 1;
+    NerfInfo[DUEL_INDEX][0].AbsorbNerfPctHard = 1;
+    NerfInfo[DUEL_INDEX][0].MeleeDamageBuffPctHard = 1;
+    NerfInfo[DUEL_INDEX][0].SpellDamageBuffPctHard = 1;
 
     // Heroic Quest -> MapId Translation
     HeroicTBCQuestMapList[542] = 11362; // Blood Furnace
