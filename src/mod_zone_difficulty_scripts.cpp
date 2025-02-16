@@ -38,13 +38,14 @@ public:
             uint32 mapId = target->GetMapId();
             bool nerfInDuel = sZoneDifficulty->ShouldNerfInDuels(target);
 
-            //Check if the map of the target is subject of a nerf at all OR if the target is subject of a nerf in a duel
+            // Check if the map of the target is subject to a nerf at all OR if the target is subject to a nerf in a duel
             if (sZoneDifficulty->ShouldNerfMap(mapId) || nerfInDuel)
             {
                 if (SpellInfo const* spellInfo = aura->GetSpellInfo())
                 {
                     // Skip spells not affected by vulnerability (potions)
-                    if (spellInfo->HasAttribute(SPELL_ATTR0_NO_IMMUNITIES))
+                    static const std::unordered_set<uint32> excludedSpells = { 31852, 31851, 31850 };
+                    if (spellInfo->HasAttribute(SPELL_ATTR0_NO_IMMUNITIES) || excludedSpells.count(spellInfo->Id))
                         return;
 
                     if (spellInfo->HasAura(SPELL_AURA_SCHOOL_ABSORB))
@@ -88,7 +89,7 @@ public:
                             else if (sZoneDifficulty->NerfInfo[DUEL_INDEX][0].Enabled > 0 && nerfInDuel)
                                 absorb = scaleAbsorb(absorb, sZoneDifficulty->NerfInfo[DUEL_INDEX][0].AbsorbNerfPct);
 
-                            //This check must be last and override duel and map adjustments
+                            // This check must be last and override duel and map adjustments
                             if (sZoneDifficulty->SpellNerfOverrides.find(spellInfo->Id) != sZoneDifficulty->SpellNerfOverrides.end())
                             {
                                 if (sZoneDifficulty->SpellNerfOverrides[spellInfo->Id].find(mapId) != sZoneDifficulty->SpellNerfOverrides[spellInfo->Id].end())
